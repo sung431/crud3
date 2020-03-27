@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="department">
+
+	<resultMap id="DepartmentVO" type="com.ese.crud3.vo.DepartmentVO">
+		<id property="deptNo" column="dept_no" />
+		<result property="deptName" column="dept_name" />
+	</resultMap>
+	
+	<select id="listAll" resultMap="DepartmentVO">
+		<![CDATA[
+			SELECT dept_no, dept_name 
+			FROM department
+			ORDER BY dept_no DESC;
+		]]>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO department(dept_name) 
+		VALUES(#{deptName});
+	</insert>
+	
+	<select id="selectOne" resultMap="DepartmentVO">
+		SELECT dept_no, dept_name 
+		FROM department
+		WHERE dept_no = #{deptNo};
+	</select>
+	
+	<update id="update">
+		UPDATE department
+		SET dept_name = #{deptName}
+		WHERE dept_no = #{deptNo};
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM department
+		WHERE dept_no = #{deptNo};
+	</delete>
+	
+	<select id="selectListCnt" resultType="_int">
+		SELECT COUNT(*) FROM department;
+	</select>
+</mapper>
