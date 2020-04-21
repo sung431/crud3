@@ -4,7 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import com.ese.crud3.vo.DepartmentVO;
 
 @Controller
 public class DepartmentController {
-	Logger log = Logger.getLogger(this.getClass());
+	Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@Resource(name = "departmentService")
 	private DepartmentService departmentService;
